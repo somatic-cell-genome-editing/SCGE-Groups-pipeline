@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+    <Properties>
+        <Property name="basePath">logs</Property>
+    </Properties>
+
+    <Appenders>
+        <File name="fileLogger" fileName="${basePath}/scge-groupsio-info.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
+            </PatternLayout>
+            <!--Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+            </Policies-->
+        </File>
+
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout   pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="edu.mcw.scge.Manager" level="debug" additivity="false">
+            <appender-ref ref="fileLogger" level="debug" />
+            <appender-ref ref="console" level="debug" />
+        </Logger>
+        <!--Root level="debug" additivity="false">
+            <appender-ref ref="console" />
+        </Root-->
+    </Loggers>
+</Configuration>
